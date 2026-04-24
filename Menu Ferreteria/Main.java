@@ -16,12 +16,15 @@ public class Main {
     opcion = menu.seleccionarOpcion();
     switch(opcion){
       case 1: 
+     
       producto1 = menu.crearProductoDesdeTeclado();
       //producto1 = new Producto(10, 2, "Martillo", "herramientas", 65.50);
        System.out.println("ALTA PRODUCTO");
        break;
-      case 2: System.out.println("INVENTARIO PRODUCTO");
-      producto1.mostrarProducto();
+       case 2:
+       menu.mostrarInventario();
+       //case 2: System.out.println("INVENTARIO PRODUCTO");
+      //producto1.mostrarProducto();
       break;
 
         case 3:

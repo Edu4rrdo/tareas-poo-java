@@ -1,0 +1,3 @@
+6767,Filtro de aceite,750.0,20,Aveo
+1234,Motor,100000.0,1,Camaro
+4321,Balatas,300.0,5,Tsuru

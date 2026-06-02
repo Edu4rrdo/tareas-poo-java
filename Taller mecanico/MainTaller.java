@@ -70,7 +70,12 @@ public class MainTaller {
                     menu.crearOrdenServicio(); // Genera el presupuesto y descuenta stock
                     break;
 
-                case 6: 
+                case 6:
+                    // Llamamos a la función inventada
+                    menu.mostrarReporteBajoStock();
+                    break;
+
+                case 7: 
                     System.out.println("Saliendo del sistema automotriz...");
                     break;
 
@@ -78,8 +83,8 @@ public class MainTaller {
                     System.out.println("Opción no válida. Intente de nuevo.");
                     break;
             }
-        } while(opcion != 6); // Rompe el ciclo al presionar 6
+        } while(opcion != 7); // <-- IMPORTANTE: Cambiamos esto a 7 para que no se cierre con el 6
         
-        entrada.close(); // Buena práctica cerrar el Scanner de lectura
+        entrada.close(); 
     }
 }

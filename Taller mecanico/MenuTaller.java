@@ -3,6 +3,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MenuTaller {
@@ -18,13 +19,19 @@ public class MenuTaller {
         System.out.println("| 3. Buscar Refacción por ID                      |");
         System.out.println("| 4. Eliminar Refacción                           |");
         System.out.println("| 5. Generar Orden de Servicio (Reparación)       |");
-        System.out.println("| 6. Salir                                        |");
+        System.out.println("| 6. Reporte de Bajo Stock (¡Nuevo!)              |");
+        System.out.println("| 7. Salir                                        |");
         System.out.println("+-------------------------------------------------+");
         System.out.print("Elige una opción: ");
     }
 
-    public int seleccionarOpcion() {
-        return entrada.nextInt();
+   public int seleccionarOpcion() {
+        try {
+            return entrada.nextInt();
+        } catch (InputMismatchException e) {
+            entrada.nextLine(); // Limpiamos el buffer para que no se trabe leyendo la misma letra
+            return -1; // Retornamos un número que no existe en el menú (-1)
+        }
     }
 
     public void crearRefaccionDesdeTeclado(){
@@ -159,4 +166,21 @@ public class MenuTaller {
         System.out.println("Refacción eliminada correctamente del archivo.");
     }
 }
+public void mostrarReporteBajoStock() {
+        System.out.println("\n--- ALERTA: REPORTE DE BAJO STOCK ---");
+        boolean hayBajoStock = false;
+        
+        for (Refaccion r : inventario) {
+            // Si el stock es menor a 5, lanza la alerta
+            if (r.getStock() < 5) {
+                System.out.println("¡PRECAUCIÓN! " + r.getNombre() + " (ID: " + r.getId() + ") - Quedan solo: " + r.getStock() + " piezas.");
+                hayBajoStock = true;
+            }
+        }
+        
+        if (!hayBajoStock) {
+            System.out.println("Todo en orden. No hay refacciones con escasez de stock.");
+        }
+        System.out.println("-------------------------------------");
+    }
 }

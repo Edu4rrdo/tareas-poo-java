@@ -9,6 +9,7 @@
 public class Main {
   public static void main(String[] args) {
     Menu menu = new Menu();
+    menu.cargarProductosDesdeArchivo();
     int opcion;
     Producto producto1 = null;
     do {
@@ -22,22 +23,32 @@ public class Main {
        System.out.println("ALTA PRODUCTO");
        break;
        case 2:
-       menu.mostrarInventario();
+       //menu.mostrarInventario();
+       menu.mostrarInventarioDesdeArchivo();
        //case 2: System.out.println("INVENTARIO PRODUCTO");
       //producto1.mostrarProducto();
       break;
 
         case 3:
+           System.out.println("BUSCAR producto por ID");
+           menu.buscarProductoDesdeTeclado();
+           break;
+            case 4:
+           System.out.println("Borrando producto");
+           menu.eliminarProducto();
+           break;
+            case 5:
            System.out.println("REALIZANDO VENTA");
+           menu.crearFactura(); 
            break;
 
-         case 4: System.out.println("Saliendo...");
+         case 6: System.out.println("Saliendo...");
          break;
          
       default: 
       System.out.println("opcion no valida");
       break;
     }
-    }while(opcion!=04);
+    }while(opcion!=06);
   }//termina el psvm
 }//termina la clase Main
